@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
+import UsersFeedbackPage from './UsersFeedbackComponent';
+import DownloadsPage from './DownloadsComponent';
+import FeaturesPage from './FeaturesComponents';
 import mission from '../images/mission.jpg';
 import features from '../images/features.jpg';
 import feedback from '../images/feedback.jpg';
 import '../App.css';
+import OurMissionPage from './OurMissionComponent';
+import Contact from './ContactComponent';
+
 
 
 const items = [
@@ -45,6 +51,7 @@ const HomePage = (props) => {
     const goToIndex = (newIndex) => {
       if (animating) return;
       setActiveIndex(newIndex);
+
     }
   
     const slides = items.map((item) => {
@@ -55,24 +62,47 @@ const HomePage = (props) => {
           key={item.src}
           className="carousel-item"
         >
-          <img src={item.src} alt={item.altText} height={"500"} width={"100%"}/>
+          <img src={item.src} alt={item.altText} height={"600"} width={"100%"}/>
           <CarouselCaption captionText={item.text} captionHeader={item.caption} />
         </CarouselItem>
       );
     });
   
     return (
-      <Carousel
-        activeIndex={activeIndex}
-        next={next}
-        previous={previous}
-      >
-        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
-        {slides}
-        <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-        <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
-      </Carousel>
+      <div >
+        <Carousel
+          activeIndex={activeIndex}
+          next={next}
+          previous={previous}
+          className="carousel"
+        >
+          <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+          {slides}
+          <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
+          <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+        </Carousel>
+      </div>
     );
 }
 
-export default HomePage;
+
+
+ 
+
+
+const MainPage = () => {
+
+  return(
+    <div>
+      <HomePage />
+      <OurMissionPage />
+      <FeaturesPage />
+     
+      <DownloadsPage />
+      <UsersFeedbackPage />
+      <Contact />
+    </div>
+  );
+}
+
+export default MainPage;

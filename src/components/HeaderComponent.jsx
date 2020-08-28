@@ -1,8 +1,11 @@
 import React, { Component, useState } from 'react';
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Modal, ModalHeader, ModalBody, Button,
-        Form, FormGroup, Label, Input, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+    Form, FormGroup, Label, Input, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import logo from '.././logo.png'; 
+import { NavLink } from 'react-router-dom';
+import WelcomeToChatberg from './WelcomeToChatberg';
+import Userchat from './ChatboxComponent';
+import { Link } from 'react-scroll';
 
 const InterestDropdown = (props) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -10,7 +13,7 @@ const InterestDropdown = (props) => {
     const toggle = () => setDropdownOpen(prevState => !prevState);
   
     return (
-      <Dropdown isOpen={dropdownOpen} toggle={toggle} >
+      <Dropdown isOpen={dropdownOpen} toggle={toggle} size="sm">
         <DropdownToggle caret className="jumbotron-btn">
           -select-
         </DropdownToggle>
@@ -24,9 +27,7 @@ const InterestDropdown = (props) => {
         </DropdownMenu>
       </Dropdown>
     );
-  }
-
-  
+}
 
 class Header extends Component {
     constructor(props) {
@@ -34,11 +35,13 @@ class Header extends Component {
     
         this.state = {
           isNavOpen: false,
-          isModalOpen: false
+          isModalOpen: false,
+          isChatOpen: false
         };
 
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.toggleChat = this.toggleChat.bind(this);
       }
 
       toggleNav() {
@@ -48,70 +51,92 @@ class Header extends Component {
       }
 
       toggleModal() {
-          this.setState({
-              isModalOpen: !this.state.isModalOpen
-          })
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
+        })
+      }
+
+      toggleChat() {
+        this.setState({
+            isChatOpen: !this.state.isChatOpen,
+            isModalOpen: !this.state.isModalOpen
+        })
       }
 
     render() {
+
         return(
-            <div>
-                <Navbar dark expand="md">
-                    <div className="container">
-                        <NavbarToggler onClick={this.toggleNav} />
-                        <NavbarBrand className="mr-auto navbar-brand" href="/"><img src={logo} height="31" width="40" alt='Chatberg' />Chatberg</NavbarBrand>
-                        <Collapse isOpen={this.state.isNavOpen} navbar >
-                            <Nav navbar >
-                            <NavItem> 
-                                <NavLink className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink className="nav-link" to='/ourmission'><span className="fa fa-briefcase fa-lg"></span> Our Mission</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink className="nav-link"  to='/features'><span className="fa fa-th-list fa-lg"></span> Features</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink className="nav-link" to='/usersfeedback'><span className="fa fa-comments fa-lg"></span> Users Feedback</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink className="nav-link" to='/downloads'><span className="fa fa-download fa-lg"></span> Downloads</NavLink>
-                            </NavItem>
-                            </Nav>
-                            <Nav className="ml-auto" navbar>
-                                <NavItem>
-                                    <Button onClick={this.toggleModal} className="nav-btn">
-                                        <span className="fa fa-user-plus fa-lg"></span>Register
-                                    </Button>
+            <div className="">
+                <div >
+                   
+                    <Navbar dark expand="md">
+                        <div className="container sticky">
+                            <NavbarToggler onClick={this.toggleNav} />
+                            <NavbarBrand className="mr-auto navbar-brand" href="/"><img src={logo} height="30" width="45" alt='Chatberg' />CHATBERG</NavbarBrand>
+                            <Collapse isOpen={this.state.isNavOpen} navbar >
+                                <Nav navbar >
+                                <NavItem> 
+                                    <NavLink className="nav-link" to='home' ><span className="fa fa-home fa-lg"></span> Home</NavLink>
                                 </NavItem>
-                            </Nav>
-                        </Collapse>
-                    </div>
-                </Navbar>
+                                <NavItem>
+                                    <Link className="nav-link" to='ourmission' smooth={true} duration={1000}><span className="fa fa-briefcase fa-lg"></span> Our Mission</Link>
+                                </NavItem>
+                                <NavItem>
+                                    <Link className="nav-link"  to='features' smooth={true} duration={1000}><span className="fa fa-th-list fa-lg"></span> Features</Link>
+                                </NavItem>
+                                <NavItem>
+                                    <Link className="nav-link" to="downloads" smooth={true} duration={1000}><span className="fa fa-download fa-lg"></span> Downloads</Link>
+                                </NavItem>
+                                <NavItem>
+                                    <Link className="nav-link" to='usersfeedback' smooth={true} duration={1000}><span className="fa fa-comments fa-lg"></span> Users Feedback</Link>
+                                </NavItem>
+                                <NavItem>
+                                    <Link className="nav-link" to='contactus' smooth={true} duration={1000}><span className="fa fa-address-card fa-lg"></span> Contact Us</Link>
+                                </NavItem>
+                                
+                                </Nav>
+                                <Nav className="ml-auto" navbar>
+                                    <NavItem>
+                                        <Button onClick={this.toggleModal} className="nav-btn">
+                                            <span className="fa fa-user-plus fa-lg"></span>Register
+                                        </Button>
+                                    </NavItem>
+                                </Nav>
+                            </Collapse>
+                        </div>
+                    </Navbar>
+                </div>
+
+
+
+                {/* Jumbotron Header */}
+                
                 <Jumbotron>
                     <div className="container">
                         <div className="row row-header">
                             <div className="col-12 col-sm-8">
-                                <h1>Welcome to Chatberg</h1>
-                                <p>Chatberg is an Omeagle based platform to entertain yourselves talking with strangers</p>
+                                <WelcomeToChatberg className="navbar-brand"/>
+                                
                             </div>
                         </div>
 
                         <div className="row row-header">
-                                <Button onClick={this.toggleModal} className="jumbotron-btn">
+                                <Button onClick={this.toggleModal} className="jumbotron-btn" size="lg">
                                     <span className="fa fa-comments fa-lg"></span>Start Chat
                                 </Button>
 
-                                <Button onClick={this.toggleModal} className="jumbotron-btn">
+                                <Button className="jumbotron-btn" size="lg">
                                     <span className="fa fa-search fa-lg"></span>Explore Us
                                 </Button>
 
                         </div>
                     </div>
                 </Jumbotron>
+
+                {/* This is the modal for registration  */}
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} >
                     <ModalHeader toggle={this.toggleModal} className="modal-header">
-                        Register
+                        Register Yourself 
                     </ModalHeader>
                     <ModalBody className="nav-btn">
                         <Form>
@@ -128,12 +153,21 @@ class Header extends Component {
                                 <Input type="checkbox" id="trustus" name="trustus" innerRef={input => this.trustus = input}></Input>
                                 Do you trust Chatberg?</Label>
                             </FormGroup>
-                                <Button type="submit" value="submit" className="jumbotron-btn">Register</Button>
+                                <NavLink to='/mychatbox'  >
+                                    <Button className="jumbotron-btn" size="sm" onClick={this.toggleChat}>
+                                        <span className="fa fa-user-plus fa-sm"></span>
+                                        Register
+                                    </Button>
+                                </NavLink>
                         </Form>
                     </ModalBody>
                 </Modal>
+                
+
             </div>
         );
+        
+        
     }
 }
 

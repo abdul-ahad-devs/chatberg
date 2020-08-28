@@ -1,8 +1,9 @@
+
 body {
   margin: auto;
-  padding: 0px;
-  font-family: 'Pacifico', cursive;
-  background-color: #31D8A7;
+  padding: auto;
+  font-family: Arial, 'Times New Roman', Times;
+  background-color: #303243;
 }
 
 .row-header{
@@ -14,7 +15,7 @@ body {
 }
 
 .navbar-brand {
-  font-family: 'Pacifico', cursive;
+  font-family: 'chatberg';
   font-size: 30px;
 }
 .row-content {
@@ -23,16 +24,25 @@ body {
   border-bottom: 1px ridge;
   min-height:400px;
 }
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100; /* this is optional and should be different for every project */
+}
 
 .footer{
-  background-color: #006062;
-  margin:0px auto;
-  padding: 20px 0px 20px 0px;
+  background-color: #303243;
+  color: #00cc6a;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 50px 0px;
 }
+
+
 .jumbotron {
   padding:70px 30px 70px 30px;
   margin:0px auto;
-  background: #31D8A7 ;
+  background: #303243 ;
   color:floralwhite;
 }
 
@@ -42,10 +52,14 @@ address{
   color: floralwhite;
 }
 
+.form-style {
+  border-radius: 20px;
+}
 .navbar-dark {
   /* dark color */
-  background-color: #006062;  
+  background-color: #303243;  
 }
+
 
 .page-enter {
   opacity: 0.01;
@@ -70,29 +84,114 @@ address{
 }
 
 .nav-btn {
-  background-color: #31D8A7;
+  background-color: #00cc6a;
+}
+.nav-link {
+  cursor: pointer;
 }
 
 .jumbotron-btn {
-  background-color: #006062;
+  background-color: #303243;
   margin: 5px;
 }
 
 .modal {
-  color: white;
+  color: floralwhite;
+  font-weight: bold;
 
 }
 
+
 .modal-header {
-  background-color: #006062;
+  background-color: #303243;
   font-weight: bold;
 }
 
 .modal-body {
-  background-color: #31D8A7;
+  background-color: #00cc6a;
+}
+
+.chatbox {
+  color: floralwhite;
+  border: 5px soild #00cc6a;
+  margin: 20px;
 }
 
 .carousel-item {
-  height: 500px;
+  height: 600;
+}
+
+.carousel {
+  margin: 20px 20px;
+}
+
+.card-header {
+  font-family: 'chatberg';;
+  /* font-weight: 'bold'; */
+  color: floralwhite;
+  font-size: 30px;
+  padding: 40px;
+
+}
+
+.features-card-color {
+
+  background-color: #4D5CB2;
+  border-color: #4D5CB2;
+}
+
+.download-card-color {
+  background-color: #00cc6a;
+  border-color: #00cc6a;
+
+}
+
+.feedback-card-color {
+  background-color: #1A1A1A;
+  border-color: #1A1A1A; 
+}
+.card-body {
+  font-family: 'Arial', cursive;
+  color: floralwhite;
+  align-Items: center; 
+  justify-Items: center; 
+  padding: 20px;  
+}
+
+.download-btn {
+  margin: 5px;
+}
+
+.card-break {
+  border: 1px solid floralwhite;
+}
+
+.features-styles {
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.welcome-style {
+  font-family: 'chatberg';
+  font-weight: 'bold';
+  font-size: '500px';
+  color: #00cc6a;
+};
+
+/* 303243 dark color */
+/* 00cc6a green */
+
+.icon-color {
+  color: #00cc6a;
+}
+
+.fa-cog {
+  color: #00cc6a;;
+}
+
+.light-gray{
+  background-color: #D3D3D3;
+  border-color: #D3D3D3;
+  color: #303243;
 }
 
